@@ -24,5 +24,4 @@ tussen het groene licht en de start knop.
 
 ![Afbeelding met Kleurrijkheid, schermopname, cirkel, ontwerp
 Automatisch gegenereerde
-beschrijving](./media/image1.png){width="1.4168646106736658in"
-height="4.792335958005249in"}
+beschrijving](./media/image1.png)
