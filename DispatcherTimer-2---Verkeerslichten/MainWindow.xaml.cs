@@ -21,31 +21,31 @@ namespace DispatcherTimer_2___Verkeerslichten
     /// </summary>
     public partial class MainWindow : Window
     {
-        DispatcherTimer TimerRed;
-        DispatcherTimer TimerOrange;
-        DispatcherTimer TimerGreen;
-        DispatcherTimer TimerInfo;
-        int TimerInfoCounter;
+        DispatcherTimer _timerRed;
+        DispatcherTimer _timerOrange;
+        DispatcherTimer _timerGreen;
+        DispatcherTimer _timerInfo;
+        int _timerInfoCounter;
 
         public MainWindow()
         {
             InitializeComponent();
 
-            TimerRed = new DispatcherTimer();
-            TimerRed.Interval = new TimeSpan(0, 0, 2);
-            TimerRed.Tick += TimerRed_Tick;
+            _timerRed = new DispatcherTimer();
+            _timerRed.Interval = new TimeSpan(0, 0, 2);
+            _timerRed.Tick += TimerRed_Tick;
 
-            TimerOrange = new DispatcherTimer();
-            TimerOrange.Interval = new TimeSpan(0, 0, 2);
-            TimerOrange.Tick += TimerOrange_Tick;
+            _timerOrange = new DispatcherTimer();
+            _timerOrange.Interval = new TimeSpan(0, 0, 2);
+            _timerOrange.Tick += TimerOrange_Tick;
 
-            TimerGreen = new DispatcherTimer();
-            TimerGreen.Interval = new TimeSpan(0, 0, 4);
-            TimerGreen.Tick += TimerGreen_Tick;
+            _timerGreen = new DispatcherTimer();
+            _timerGreen.Interval = new TimeSpan(0, 0, 4);
+            _timerGreen.Tick += TimerGreen_Tick;
 
-            TimerInfo = new DispatcherTimer();
-            TimerInfo.Interval = new TimeSpan(0, 0, 1);
-            TimerInfo.Tick += TimerInfo_Tick;
+            _timerInfo = new DispatcherTimer();
+            _timerInfo.Interval = new TimeSpan(0, 0, 1);
+            _timerInfo.Tick += TimerInfo_Tick;
         }
 
 
@@ -54,10 +54,10 @@ namespace DispatcherTimer_2___Verkeerslichten
             redImage.Visibility = Visibility.Hidden;
             orangeImage.Visibility = Visibility.Hidden;
             greenImage.Visibility = Visibility.Visible;
-            TimerRed.Stop();
-            TimerInfoCounter = TimerGreen.Interval.Seconds;
-            infoLabel.Content = TimerInfoCounter;
-            TimerGreen.Start();
+            _timerRed.Stop();
+            _timerInfoCounter = _timerGreen.Interval.Seconds;
+            infoLabel.Content = _timerInfoCounter;
+            _timerGreen.Start();
         }
 
         private void TimerOrange_Tick(object sender, EventArgs e)
@@ -65,10 +65,10 @@ namespace DispatcherTimer_2___Verkeerslichten
             redImage.Visibility = Visibility.Visible;
             orangeImage.Visibility = Visibility.Hidden;
             greenImage.Visibility = Visibility.Hidden;
-            TimerOrange.Stop();
-            TimerInfoCounter = TimerRed.Interval.Seconds;
-            infoLabel.Content = TimerInfoCounter;
-            TimerRed.Start();
+            _timerOrange.Stop();
+            _timerInfoCounter = _timerRed.Interval.Seconds;
+            infoLabel.Content = _timerInfoCounter;
+            _timerRed.Start();
         }
 
         private void TimerGreen_Tick(object sender, EventArgs e)
@@ -76,15 +76,15 @@ namespace DispatcherTimer_2___Verkeerslichten
             redImage.Visibility = Visibility.Hidden;
             orangeImage.Visibility = Visibility.Visible;
             greenImage.Visibility = Visibility.Hidden;
-            TimerGreen.Stop();
-            TimerInfoCounter = TimerOrange.Interval.Seconds;
-            infoLabel.Content = TimerInfoCounter;
-            TimerOrange.Start();
+            _timerGreen.Stop();
+            _timerInfoCounter = _timerOrange.Interval.Seconds;
+            infoLabel.Content = _timerInfoCounter;
+            _timerOrange.Start();
         }
 
         private void TimerInfo_Tick(object sender, EventArgs e)
         {
-            infoLabel.Content = --TimerInfoCounter;
+            infoLabel.Content = --_timerInfoCounter;
         }
 
         private void startButton_Click(object sender, RoutedEventArgs e)
@@ -92,10 +92,10 @@ namespace DispatcherTimer_2___Verkeerslichten
             redImage.Visibility = Visibility.Visible;
             orangeImage.Visibility = Visibility.Hidden;
             greenImage.Visibility = Visibility.Hidden;
-            TimerInfoCounter = TimerRed.Interval.Seconds;
-            infoLabel.Content = TimerInfoCounter;
-            TimerInfo.Start();
-            TimerRed.Start();
+            _timerInfoCounter = _timerRed.Interval.Seconds;
+            infoLabel.Content = _timerInfoCounter;
+            _timerInfo.Start();
+            _timerRed.Start();
         }
     }
 }
